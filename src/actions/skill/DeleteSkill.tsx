@@ -5,12 +5,11 @@ import { toast } from "react-toastify";
 const DeleteSkill = () => {
   const [allSkill, setAllSkill]: any = useState();
   useEffect(() => {
-    fetch(`https://server-mocha-tau.vercel.app/skill`, {
+    fetch(`https://admin-server-portfolio.vercel.app/skill`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
       },
-      // body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((result) => {
@@ -22,7 +21,7 @@ const DeleteSkill = () => {
   const deleteSkill = (id: string) => {
     console.log(id);
 
-    fetch(`https://server-mocha-tau.vercel.app/skill/${id}`, {
+    fetch(`https://admin-server-portfolio.vercel.app/skill/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
@@ -111,6 +110,3 @@ const DeleteSkill = () => {
   );
 };
 export default DeleteSkill;
-
-
-

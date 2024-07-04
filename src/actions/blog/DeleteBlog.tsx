@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 const DeleteBlog = () => {
   const [allBlog, setAllBlog]: any = useState();
   useEffect(() => {
-    fetch(`https://server-mocha-tau.vercel.app/blog/`, {
+    fetch(`https://admin-server-portfolio.vercel.app/blog/`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -22,7 +22,7 @@ const DeleteBlog = () => {
   const deleteBlog = (id: string) => {
     console.log(id);
 
-    fetch(`https://server-mocha-tau.vercel.app/blog/${id}`, {
+    fetch(`https://admin-server-portfolio.vercel.app/blog/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

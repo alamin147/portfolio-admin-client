@@ -10,7 +10,7 @@ const CreateProject = () => {
   const onSubmit = (data: any) => {
     console.log(data);
 
-    fetch("https://server-mocha-tau.vercel.app/project", {
+    fetch("https://admin-server-portfolio.vercel.app/project", {
       method: "POST",
       headers: {
         "content-type": "application/json",

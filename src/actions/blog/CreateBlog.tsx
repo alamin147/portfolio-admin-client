@@ -11,7 +11,7 @@ const CreateBlog = () => {
   const onSubmit = (data: any) => {
     console.log(data);
 
-    fetch("https://server-mocha-tau.vercel.app/blog", {
+    fetch("https://admin-server-portfolio.vercel.app/blog", {
       method: "POST",
       headers: {
         "content-type": "application/json",

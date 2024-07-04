@@ -11,7 +11,7 @@ const CreateSkill = () => {
   const onSubmit = (data: any) => {
     // console.log(data);
 
-    fetch("https://server-mocha-tau.vercel.app/skill", {
+    fetch("https://admin-server-portfolio.vercel.app/skill", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 const DeleteProject = () => {
   const [allProject, setAllProject]: any = useState();
   useEffect(() => {
-    fetch(`https://server-mocha-tau.vercel.app/project/`, {
+    fetch(`https://admin-server-portfolio.vercel.app/project`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -22,7 +22,7 @@ const DeleteProject = () => {
   const deleteProject = (id: string) => {
     console.log(id);
 
-    fetch(`https://server-mocha-tau.vercel.app/project/${id}`, {
+    fetch(`https://admin-server-portfolio.vercel.app/project/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
