@@ -9,8 +9,9 @@ const CreateBlog = () => {
   } = useForm();
 
   const onSubmit = (data: any) => {
+    data.time = new Date();
     console.log(data);
-
+    
     fetch("https://admin-server-portfolio.vercel.app/blog", {
       method: "POST",
       headers: {
@@ -37,11 +38,22 @@ const CreateBlog = () => {
       });
   };
 
+  // type tblog = {
+  //   _id: string | null;
+  //   title: string | null;
+  //   category: string | null;
+  //   imgUrl: string | null;
+  //   des: string | null;
+  //   shortDes?: string | null;
+  //   time: Date | null;
+  // };
+
   const inputFields = [
     { label: "Title", reg: "title", type: "text" },
     { label: "Category", reg: "category", type: "text" },
     { label: "Image Url", reg: "imgUrl", type: "text" },
     { label: "Description", reg: "des", type: "text" },
+    { label: "Short Description", reg: "shortDes", type: "text" },
   ];
 
   return (

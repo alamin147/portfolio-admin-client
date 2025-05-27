@@ -117,6 +117,7 @@ function App() {
                   <span className="ml-3">Create Skill</span>
                 </a>
               </li>
+
               <li>
                 <a
                   href="/home/delete-skill"
@@ -125,6 +126,25 @@ function App() {
                   <span className="ml-3">Delete Skill</span>
                 </a>
               </li>
+
+              <li>
+                <a
+                  href="/home/create-cp"
+                  className="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                >
+                  <span className="ml-3">Create CP Profile</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/home/manage-cp"
+                  className="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                >
+                  <span className="ml-3">Manage CP Profiles</span>
+                </a>
+              </li>
+
+
             </ul>
           </div>
         </aside>

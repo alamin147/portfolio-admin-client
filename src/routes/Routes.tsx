@@ -8,6 +8,9 @@ import CreateBlog from "../actions/blog/CreateBlog";
 import DeleteBlog from "../actions/blog/DeleteBlog";
 import CreateSkill from "../actions/skill/CreateSkill";
 import DeleteSkill from "../actions/skill/DeleteSkill";
+import UpdateCP from "../actions/cpProfile/UpdateCP";
+import CreateCP from "../actions/cpProfile/CreateCP";
+import ListCP from "../actions/cpProfile/ListCP";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +70,30 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <DeleteSkill />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/home/create-cp",
+        element: (
+          <PrivateRoute>
+            <CreateCP />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/home/manage-cp",
+        element: (
+          <PrivateRoute>
+            <ListCP />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/home/update-cp/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateCP />
           </PrivateRoute>
         ),
       },
