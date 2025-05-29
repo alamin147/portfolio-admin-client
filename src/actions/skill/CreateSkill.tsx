@@ -11,7 +11,7 @@ const CreateSkill = () => {
   const onSubmit = (data: any) => {
     // console.log(data);
 
-    fetch("https://admin-server-portfolio.vercel.app/skill", {
+    fetch(`${import.meta.env.VITE_SERVER_URL}/skill`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

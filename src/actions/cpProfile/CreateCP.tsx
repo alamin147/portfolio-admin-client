@@ -10,7 +10,7 @@ const CreateCP = () => {
   const onSubmit = (data: any) => {
     console.log(data);
 
-    fetch("https://admin-server-portfolio.vercel.app/cpProfile", {
+    fetch(`${import.meta.env.VITE_SERVER_URL}/cpProfile`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

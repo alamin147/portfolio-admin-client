@@ -15,7 +15,7 @@ const Login = () => {
     console.log(data);
 
     fetch(
-      "https://admin-server-portfolio.vercel.app/login",
+      `${import.meta.env.VITE_SERVER_URL}/login`,
       {
         method: "POST",
         headers: {

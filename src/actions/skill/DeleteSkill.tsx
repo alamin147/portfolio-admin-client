@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 const DeleteSkill = () => {
   const [allSkill, setAllSkill]: any = useState();
   useEffect(() => {
-    fetch(`https://admin-server-portfolio.vercel.app/skill`, {
+    fetch(`${import.meta.env.VITE_SERVER_URL}/skill`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -21,7 +21,7 @@ const DeleteSkill = () => {
   const deleteSkill = (id: string) => {
     console.log(id);
 
-    fetch(`https://admin-server-portfolio.vercel.app/skill/${id}`, {
+    fetch(`${import.meta.env.VITE_SERVER_URL}/skill/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

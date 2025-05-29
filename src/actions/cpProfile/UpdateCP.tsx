@@ -17,7 +17,7 @@ const UpdateCP = () => {
   useEffect(() => {
     // console.log("Fetching CP profile with ID:", id);
 
-    fetch(`https://admin-server-portfolio.vercel.app/cpProfile`)
+    fetch(`${import.meta.env.VITE_SERVER_URL}/cpProfile`)
       .then((res) => {
         console.log("Response status:", res.status);
         if (!res.ok) {
@@ -55,7 +55,7 @@ const UpdateCP = () => {
 
     const { _id, ...dataWithoutId } = data;
 
-    fetch(`https://admin-server-portfolio.vercel.app/cpProfile/${id}`, {
+    fetch(`${import.meta.env.VITE_SERVER_URL}/cpProfile/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

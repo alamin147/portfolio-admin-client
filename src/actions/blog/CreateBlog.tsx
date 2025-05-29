@@ -11,8 +11,8 @@ const CreateBlog = () => {
   const onSubmit = (data: any) => {
     data.time = new Date();
     console.log(data);
-    
-    fetch("https://admin-server-portfolio.vercel.app/blog", {
+
+    fetch(`${import.meta.env.VITE_SERVER_URL}/blog`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

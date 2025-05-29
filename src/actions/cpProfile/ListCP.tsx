@@ -20,7 +20,7 @@ const ListCP = () => {
 
   useEffect(() => {
     // Fetch all CP profiles
-    fetch("https://admin-server-portfolio.vercel.app/cpProfile")
+    fetch(`${import.meta.env.VITE_SERVER_URL}/cpProfile`)
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Server responded with status: ${res.status}`);
@@ -43,7 +43,7 @@ const ListCP = () => {
 
   const handleDelete = (id: string) => {
     if (window.confirm("Are you sure you want to delete this profile?")) {
-      fetch(`https://admin-server-portfolio.vercel.app/cpProfile/${id}`, {
+      fetch(`${import.meta.env.VITE_SERVER_URL}/cpProfile/${id}`, {
         method: "DELETE",
       })
         .then((res) => {
