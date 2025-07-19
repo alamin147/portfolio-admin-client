@@ -11,6 +11,7 @@ import DeleteSkill from "../actions/skill/DeleteSkill";
 import UpdateCP from "../actions/cpProfile/UpdateCP";
 import CreateCP from "../actions/cpProfile/CreateCP";
 import ListCP from "../actions/cpProfile/ListCP";
+import BlogEditor from "../actions/blogs/BlogEditor";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <CreateBlog />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/home/blog-editor",
+        element: (
+          <PrivateRoute>
+            <BlogEditor />
           </PrivateRoute>
         ),
       },
