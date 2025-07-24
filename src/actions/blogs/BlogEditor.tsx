@@ -52,23 +52,54 @@ export default function BlogEditor() {
   const [content, setContent] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Blog fields state
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
+  const [shortDes, setShortDes] = useState("");
+
   const handleSubmit = async () => {
     if (!content.trim()) {
       toast.error("Please write some content before publishing!");
       return;
     }
 
+    if (!title.trim()) {
+      toast.error("Please enter a title!");
+      return;
+    }
+
+    if (!category.trim()) {
+      toast.error("Please enter a category!");
+      return;
+    }
+
+    const blogData = {
+      title,
+      category,
+      imgUrl,
+      shortDes,
+      content,
+      time: new Date()
+    };
+
     setIsSubmitting(true);
     try {
       const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/blog-editor`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content }),
+        body: JSON.stringify(blogData),
       });
 
       if (response.ok) {
         toast.success("Blog published successfully!");
-        setContent(""); // Clear the editor after successful submission
+        // Clear all fields after successful submission
+        setContent("");
+        setTitle("");
+        setCategory("");
+        setImgUrl("");
+
+        setShortDes("");
       } else {
         toast.error("Failed to publish blog. Please try again.");
       }
@@ -87,6 +118,67 @@ export default function BlogEditor() {
       </h1>
 
       <div className="bg-white rounded-lg shadow-lg p-6">
+        {/* Blog Fields */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900">
+              Title *
+            </label>
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="Enter blog title"
+            />
+          </div>
+
+          <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900">
+              Category *
+            </label>
+            <input
+              type="text"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="Enter blog category"
+            />
+          </div>
+
+          <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900">
+              Image URL
+            </label>
+            <input
+              type="text"
+              value={imgUrl}
+              onChange={(e) => setImgUrl(e.target.value)}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="Enter image URL"
+            />
+          </div>
+
+          <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900">
+              Short Description
+            </label>
+            <input
+              type="text"
+              value={shortDes}
+              onChange={(e) => setShortDes(e.target.value)}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="Enter short description"
+            />
+          </div>
+        </div>
+
+        <div className="mb-4">
+          <label className="block mb-2 text-sm font-medium text-gray-900">
+            Content *
+          </label>
+        </div>
+
         <div style={{ minHeight: "400px" }}>
           <ReactQuill
             value={content}
@@ -101,7 +193,13 @@ export default function BlogEditor() {
 
         <div className="flex justify-end gap-4 mt-4">
           <button
-            onClick={() => setContent("")}
+            onClick={() => {
+              setContent("");
+              setTitle("");
+              setCategory("");
+              setImgUrl("");
+              setShortDes("");
+            }}
             disabled={isSubmitting}
             className="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 disabled:opacity-50"
           >
@@ -109,7 +207,7 @@ export default function BlogEditor() {
           </button>
           <button
             onClick={handleSubmit}
-            disabled={isSubmitting || !content.trim()}
+            disabled={isSubmitting || !content.trim() || !title.trim() || !category.trim()}
             className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
           >
             {isSubmitting ? "Publishing..." : "Publish"}
