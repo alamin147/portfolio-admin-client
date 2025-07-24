@@ -57,6 +57,7 @@ export default function BlogEditor() {
   const [category, setCategory] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [shortDes, setShortDes] = useState("");
+  const [readTime, setReadTime] = useState("");
 
   const handleSubmit = async () => {
     if (!content.trim()) {
@@ -80,6 +81,7 @@ export default function BlogEditor() {
       imgUrl,
       shortDes,
       content,
+      readTime,
       time: new Date()
     };
 
@@ -98,7 +100,7 @@ export default function BlogEditor() {
         setTitle("");
         setCategory("");
         setImgUrl("");
-
+        setReadTime("");
         setShortDes("");
       } else {
         toast.error("Failed to publish blog. Please try again.");
@@ -143,6 +145,18 @@ export default function BlogEditor() {
               onChange={(e) => setCategory(e.target.value)}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="Enter blog category"
+            />
+          </div>
+          <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900">
+              Read time *
+            </label>
+            <input
+              type="text"
+              value={readTime}
+              onChange={(e) => setReadTime(e.target.value)}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="Enter blog readtime (e.g., 5)"
             />
           </div>
 
@@ -199,6 +213,7 @@ export default function BlogEditor() {
               setCategory("");
               setImgUrl("");
               setShortDes("");
+                setReadTime("");
             }}
             disabled={isSubmitting}
             className="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 disabled:opacity-50"
